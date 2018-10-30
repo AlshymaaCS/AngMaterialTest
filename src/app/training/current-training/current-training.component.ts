@@ -11,9 +11,9 @@ import { TrainingService } from '../training.service';
 })
 export class CurrentTrainingComponent implements OnInit {
   progress = 0;
-  timer: any;
+  timer: number;
 
-  constructor(private dialog: MatDialog, private trainingService: TrainingService) { }
+  constructor(private dialog: MatDialog, private trainingService: TrainingService) {}
 
   ngOnInit() {
     this.startOrResumeTimer();

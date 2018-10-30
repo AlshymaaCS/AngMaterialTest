@@ -22,6 +22,13 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { UIService } from './shared/ui.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +45,10 @@ import { AuthGuard } from './auth/auth.guard';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
@@ -48,7 +59,8 @@ import { AuthGuard } from './auth/auth.guard';
   providers: [
     TrainingService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UIService
   ],
   bootstrap: [AppComponent],
   entryComponents: [StopTrainingComponent]

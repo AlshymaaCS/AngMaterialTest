@@ -15,11 +15,11 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./sidenav-list.component.css']
 })
 export class SidenavListComponent implements OnInit, OnDestroy {
-  @Output() closeSidenav = new EventEmitter<void>();
+  @Output() closeSidenavClicked = new EventEmitter<void>();
   isAuth = false;
   authSubscription: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
@@ -28,11 +28,11 @@ export class SidenavListComponent implements OnInit, OnDestroy {
   }
 
   onClose() {
-    this.closeSidenav.emit();
+    this.closeSidenavClicked.emit();
   }
 
   onLogout() {
-    this.onClose();
+    // this.onClose();
     this.authService.logout();
   }
 
